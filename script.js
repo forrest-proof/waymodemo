@@ -1,7 +1,6 @@
 const state = {
   asset: null,
   assetLabel: null,
-  basePrice: 0,
 };
 
 const totalSteps = 6;
@@ -92,7 +91,6 @@ document.querySelectorAll('.asset-card').forEach(card => {
     card.classList.add('selected');
     state.asset = card.dataset.asset;
     state.assetLabel = card.dataset.label;
-    state.basePrice = parseFloat(card.dataset.price);
     applyTierVisibility();
   });
 });
@@ -111,30 +109,15 @@ function daysBetween(startStr, endStr) {
   return Math.round(diffMs / (1000 * 60 * 60 * 24)) + 1;
 }
 
-function formatCurrency(n) {
-  return n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
-}
-
-function getCheckedValues(name) {
-  return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(i => i.value);
-}
-
 function renderReview() {
   const venueName = document.getElementById('venueName').value || 'Not provided';
   const startDate = document.getElementById('startDate').value;
   const endDate = document.getElementById('endDate').value;
-  const zoneSelect = document.getElementById('shippingZone');
-  const zonePct = parseFloat(zoneSelect.selectedOptions[0].dataset.pct);
-  const zoneLabel = zoneSelect.selectedOptions[0].textContent;
+  const zoneLabel = document.getElementById('shippingZone').selectedOptions[0].textContent;
   const reqName = document.getElementById('reqName').value || '—';
   const reqEmail = document.getElementById('reqEmail').value || '—';
 
   const days = daysBetween(startDate, endDate);
-  const base = state.basePrice;
-  const extraDaysCost = (days - 1) * base * 0.20;
-  const subtotal = base + extraDaysCost;
-  const travelCost = subtotal * zonePct;
-  const total = subtotal + travelCost;
 
   document.getElementById('rvAsset').textContent = state.assetLabel || '—';
   document.getElementById('rvVenue').textContent = venueName;
@@ -142,14 +125,6 @@ function renderReview() {
   document.getElementById('rvDuration').textContent = `${days} day${days > 1 ? 's' : ''}`;
   document.getElementById('rvZone').textContent = zoneLabel;
   document.getElementById('rvContact').textContent = `${reqName} (${reqEmail})`;
-
-  document.getElementById('qBaseLabel').textContent = `${state.assetLabel} base rate`;
-  document.getElementById('qBase').textContent = formatCurrency(base);
-  document.getElementById('qDaysLabel').textContent = `Additional days (${Math.max(days - 1, 0)} × 20%)`;
-  document.getElementById('qDays').textContent = formatCurrency(extraDaysCost);
-  document.getElementById('qTravelLabel').textContent = `Travel / shipping (${zoneLabel.split('—')[0].trim()})`;
-  document.getElementById('qTravel').textContent = formatCurrency(travelCost);
-  document.getElementById('qTotal').textContent = formatCurrency(total);
 }
 
 document.getElementById('submitBtn').addEventListener('click', () => {

@@ -162,12 +162,6 @@ h2 {
   line-height: 1.4;
 }
 
-.asset-price {
-  font-size: 14px;
-  font-weight: 500;
-  margin: 0;
-}
-
 /* Fields */
 .field { margin-bottom: 24px; }
 
@@ -272,7 +266,7 @@ textarea { resize: vertical; }
   margin: 0;
 }
 
-/* Review + quote */
+/* Review */
 .review-card {
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -292,37 +286,6 @@ textarea { resize: vertical; }
 .review-row:last-child { border-bottom: none; }
 .review-row span:first-child { color: var(--ink-soft); }
 .review-row span:last-child { font-weight: 500; text-align: right; }
-
-.quote-card {
-  background: #e8f0fe;
-  border-radius: var(--radius);
-  padding: 24px;
-  margin-bottom: 24px;
-}
-
-.quote-line {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  padding: 6px 0;
-  color: var(--ink-soft);
-}
-
-.quote-line.total {
-  border-top: 1px solid #c6dafc;
-  margin-top: 8px;
-  padding-top: 12px;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--ink);
-}
-
-.quote-disclaimer {
-  font-size: 12px;
-  color: var(--ink-soft);
-  margin: 16px 0 0;
-  line-height: 1.4;
-}
 
 /* Buttons */
 .btn-primary, .btn-secondary {
@@ -374,6 +337,64 @@ textarea { resize: vertical; }
   color: #fff;
   font-size: 28px;
   margin: 0 auto 20px;
+}
+
+.workflow-tracker {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+  position: relative;
+}
+
+.workflow-step {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 28px;
+  position: relative;
+}
+
+.workflow-step::before {
+  content: '';
+  position: absolute;
+  left: 13px;
+  top: 28px;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+
+.workflow-step:last-child::before { display: none; }
+
+.workflow-step.done::before { background: var(--g-blue); }
+
+.workflow-dot {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--border);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.workflow-step.done .workflow-dot { background: var(--g-blue); }
+
+.workflow-copy h3 {
+  margin: 0 0 2px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.workflow-copy p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.4;
 }
 
 @media (max-width: 700px) {

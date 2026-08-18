@@ -32,28 +32,25 @@
     <p class="step-desc">Pick the footprint that fits your venue. Pricing scales from here.</p>
 
     <div class="asset-grid">
-      <div class="asset-card" data-asset="trunk" data-price="3500" data-label="Trunk Sized">
+      <div class="asset-card" data-asset="trunk" data-label="Trunk Sized">
         <div class="asset-icon">🧳</div>
         <h3>Trunk Sized</h3>
         <p class="asset-dim">Fits in the trunk of a Waymo vehicle</p>
         <p class="asset-desc">A compact, fully custom activation asset — ships anywhere a Waymo can drive.</p>
-        <p class="asset-price">Starting at $3,500</p>
       </div>
 
-      <div class="asset-card" data-asset="10x10" data-price="12000" data-label="10×10">
+      <div class="asset-card" data-asset="10x10" data-label="10×10">
         <div class="asset-icon">🏳️</div>
         <h3>10×10</h3>
         <p class="asset-dim">10 ft × 10 ft footprint</p>
         <p class="asset-desc">A fully custom branded activation, sized for storefronts, plazas, and campus spaces.</p>
-        <p class="asset-price">Starting at $12,000</p>
       </div>
 
-      <div class="asset-card" data-asset="20x20" data-price="27500" data-label="20×20">
+      <div class="asset-card" data-asset="20x20" data-label="20×20">
         <div class="asset-icon">🚗</div>
         <h3>20×20</h3>
         <p class="asset-dim">20 ft × 20 ft footprint</p>
         <p class="asset-desc">A trade-show scale booth featuring an actual Waymo vehicle as the centerpiece.</p>
-        <p class="asset-price">Starting at $27,500</p>
       </div>
     </div>
   </section>
@@ -145,9 +142,9 @@
     <div class="field">
       <label for="shippingZone">Distance from nearest fulfillment hub</label>
       <select id="shippingZone">
-        <option value="local" data-pct="0">Local — under 50 miles</option>
-        <option value="regional" data-pct="0.10">Regional — 50–250 miles</option>
-        <option value="national" data-pct="0.25">National — 250+ miles</option>
+        <option value="local">Local — under 50 miles</option>
+        <option value="regional">Regional — 50–250 miles</option>
+        <option value="national">National — 250+ miles</option>
       </select>
     </div>
 
@@ -313,10 +310,10 @@
     </div>
   </section>
 
-  <!-- STEP 6: REVIEW & QUOTE -->
+  <!-- STEP 6: REVIEW -->
   <section class="step" data-step="6">
-    <h1>Review &amp; quote</h1>
-    <p class="step-desc">Here's your preliminary estimate based on what you shared.</p>
+    <h1>Review &amp; submit</h1>
+    <p class="step-desc">Confirm the details below before sending this to the activation team for triage.</p>
 
     <div class="review-card">
       <div class="review-row"><span>Asset</span><span id="rvAsset">—</span></div>
@@ -327,15 +324,6 @@
       <div class="review-row"><span>Contact</span><span id="rvContact">—</span></div>
     </div>
 
-    <div class="quote-card">
-      <h2>Estimated Quote</h2>
-      <div class="quote-line"><span id="qBaseLabel">Base rate</span><span id="qBase">$0</span></div>
-      <div class="quote-line"><span id="qDaysLabel">Additional days</span><span id="qDays">$0</span></div>
-      <div class="quote-line"><span id="qTravelLabel">Travel / shipping surcharge</span><span id="qTravel">$0</span></div>
-      <div class="quote-line total"><span>Estimated total</span><span id="qTotal">$0</span></div>
-      <p class="quote-disclaimer">This is a preliminary, automatically generated estimate. A member of the activation team will confirm final pricing within 24 hours.</p>
-    </div>
-
     <button class="btn-primary btn-submit" id="submitBtn">Request this activation</button>
   </section>
 
@@ -344,8 +332,53 @@
     <div class="confirm-wrap">
       <div class="confirm-check">✓</div>
       <h1>Your request has been submitted</h1>
-      <p class="step-desc">The activation team will follow up at <span id="confirmEmail">your email</span> with a finalized quote and next steps.</p>
+      <p class="step-desc">The activation team will follow up at <span id="confirmEmail">your email</span> with next steps. Here's how your request moves through the process:</p>
     </div>
+
+    <ol class="workflow-tracker">
+      <li class="workflow-step done">
+        <span class="workflow-dot">1</span>
+        <div class="workflow-copy">
+          <h3>Submitted</h3>
+          <p>Your request has been received and logged.</p>
+        </div>
+      </li>
+      <li class="workflow-step">
+        <span class="workflow-dot">2</span>
+        <div class="workflow-copy">
+          <h3>Triage review</h3>
+          <p>The activation team reviews scope, logistics, and feasibility.</p>
+        </div>
+      </li>
+      <li class="workflow-step">
+        <span class="workflow-dot">3</span>
+        <div class="workflow-copy">
+          <h3>Approved &amp; scheduled</h3>
+          <p>Stakeholders sign off and the activation is locked into the calendar.</p>
+        </div>
+      </li>
+      <li class="workflow-step">
+        <span class="workflow-dot">4</span>
+        <div class="workflow-copy">
+          <h3>Production &amp; deployment</h3>
+          <p>Assets are built, shipped, and set up on-site.</p>
+        </div>
+      </li>
+      <li class="workflow-step">
+        <span class="workflow-dot">5</span>
+        <div class="workflow-copy">
+          <h3>Live activation</h3>
+          <p>The event runs at the venue.</p>
+        </div>
+      </li>
+      <li class="workflow-step">
+        <span class="workflow-dot">6</span>
+        <div class="workflow-copy">
+          <h3>Post-event teardown</h3>
+          <p>Assets are struck, returned, and the request is closed out.</p>
+        </div>
+      </li>
+    </ol>
   </section>
 
   <!-- NAV -->
