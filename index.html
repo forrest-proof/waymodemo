@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Waymo Activation Request</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Google+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="app-header">
+  <div class="brand">
+    <img src="logo.png" alt="Proof Media & Experiences" class="brand-logo" />
+    <span class="brand-sep">|</span>
+    <span class="brand-sub">Waymo Activation Request</span>
+  </div>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="step-label" id="stepLabel">Step 1 of 6</div>
+</div>
+
+<main class="form-shell">
+
+  <!-- STEP 1: ASSET SELECTION -->
+  <section class="step active" data-step="1">
+    <h1>Choose your activation asset</h1>
+    <p class="step-desc">Pick the footprint that fits your venue. Pricing scales from here.</p>
+
+    <div class="asset-grid">
+      <div class="asset-card" data-asset="trunk" data-price="3500" data-label="Trunk Sized">
+        <div class="asset-icon">🧳</div>
+        <h3>Trunk Sized</h3>
+        <p class="asset-dim">Fits in the trunk of a Waymo vehicle</p>
+        <p class="asset-desc">A compact, fully custom activation asset — ships anywhere a Waymo can drive.</p>
+        <p class="asset-price">Starting at $3,500</p>
+      </div>
+
+      <div class="asset-card" data-asset="10x10" data-price="12000" data-label="10×10">
+        <div class="asset-icon">🏳️</div>
+        <h3>10×10</h3>
+        <p class="asset-dim">10 ft × 10 ft footprint</p>
+        <p class="asset-desc">A fully custom branded activation, sized for storefronts, plazas, and campus spaces.</p>
+        <p class="asset-price">Starting at $12,000</p>
+      </div>
+
+      <div class="asset-card" data-asset="20x20" data-price="27500" data-label="20×20">
+        <div class="asset-icon">🚗</div>
+        <h3>20×20</h3>
+        <p class="asset-dim">20 ft × 20 ft footprint</p>
+        <p class="asset-desc">A trade-show scale booth featuring an actual Waymo vehicle as the centerpiece.</p>
+        <p class="asset-price">Starting at $27,500</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 2: VENUE & LOGISTICS -->
+  <section class="step" data-step="2">
+    <h1>Venue &amp; logistics</h1>
+    <p class="step-desc">Help the activation team understand the space.</p>
+
+    <div class="field">
+      <label for="venueName">Venue name</label>
+      <input type="text" id="venueName" placeholder="e.g. Westfield Valley Fair" />
+    </div>
+
+    <div class="field">
+      <label for="venueAddress">Venue address (city &amp; state is fine)</label>
+      <input type="text" id="venueAddress" placeholder="e.g. San Jose, CA" />
+    </div>
+
+    <div class="field">
+      <label for="venueType">Venue type</label>
+      <select id="venueType">
+        <option value="">Select one</option>
+        <option>Retail storefront</option>
+        <option>Mall / shopping center</option>
+        <option>Office building or campus</option>
+        <option>Convention / trade show center</option>
+        <option>Outdoor plaza or park</option>
+        <option>Street festival / closure</option>
+        <option>Parking lot</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Indoor or outdoor?</label>
+      <div class="radio-row">
+        <label class="radio-pill"><input type="radio" name="indoorOutdoor" value="Indoor"> Indoor</label>
+        <label class="radio-pill"><input type="radio" name="indoorOutdoor" value="Outdoor"> Outdoor</label>
+        <label class="radio-pill"><input type="radio" name="indoorOutdoor" value="Both/Not sure"> Not sure</label>
+      </div>
+    </div>
+
+    <div class="field" data-tier="10x10 20x20">
+      <label>Is power available on-site?</label>
+      <div class="radio-row">
+        <label class="radio-pill"><input type="radio" name="power" value="Yes"> Yes</label>
+        <label class="radio-pill"><input type="radio" name="power" value="No"> No</label>
+        <label class="radio-pill"><input type="radio" name="power" value="Not sure"> Not sure</label>
+      </div>
+    </div>
+
+    <div class="field" data-tier="10x10 20x20">
+      <label>Load-in access (select all that apply)</label>
+      <div class="checkbox-col">
+        <label class="checkbox-row"><input type="checkbox" value="Loading dock"> Loading dock</label>
+        <label class="checkbox-row"><input type="checkbox" value="Freight elevator"> Freight elevator</label>
+        <label class="checkbox-row"><input type="checkbox" value="Street-level / direct access"> Street-level / direct access</label>
+        <label class="checkbox-row"><input type="checkbox" value="Stairs only"> Stairs only</label>
+      </div>
+    </div>
+
+    <div class="field-group" data-tier="10x10 20x20">
+      <div class="field">
+        <label>Does this venue utilize union labor at the dock / show floor?</label>
+        <div class="radio-row">
+          <label class="radio-pill"><input type="radio" name="union" value="Yes"> Yes</label>
+          <label class="radio-pill"><input type="radio" name="union" value="No"> No</label>
+          <label class="radio-pill"><input type="radio" name="union" value="Not sure"> Not sure</label>
+        </div>
+      </div>
+
+      <div class="union-subfields" id="unionSubfields" hidden>
+        <div class="field">
+          <label for="unionLocal">Union local / affiliation</label>
+          <input type="text" id="unionLocal" placeholder="e.g. IATSE Local 15" />
+        </div>
+        <div class="field">
+          <label for="unionContact">Union contact name &amp; phone/email</label>
+          <input type="text" id="unionContact" placeholder="e.g. Sam Rivera — (555) 555-1212" />
+        </div>
+        <div class="field">
+          <label for="unionNotes">Union labor call requirements (optional)</label>
+          <textarea id="unionNotes" rows="2" placeholder="Minimum crew call hours, jurisdictional rules, etc."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="shippingZone">Distance from nearest fulfillment hub</label>
+      <select id="shippingZone">
+        <option value="local" data-pct="0">Local — under 50 miles</option>
+        <option value="regional" data-pct="0.10">Regional — 50–250 miles</option>
+        <option value="national" data-pct="0.25">National — 250+ miles</option>
+      </select>
+    </div>
+
+    <div class="field" data-tier="10x10 20x20">
+      <label for="spaceNotes">Available space dimensions / ceiling height (optional)</label>
+      <textarea id="spaceNotes" rows="2" placeholder="Especially important for the 20x20 vehicle activation"></textarea>
+    </div>
+
+    <div class="field-group" data-tier="20x20">
+      <h2 class="subsection-heading">Vehicle logistics</h2>
+      <div class="field">
+        <label>Can a vehicle be driven directly to the booth location on-site?</label>
+        <div class="radio-row">
+          <label class="radio-pill"><input type="radio" name="vehicleAccess" value="Yes"> Yes</label>
+          <label class="radio-pill"><input type="radio" name="vehicleAccess" value="No"> No</label>
+          <label class="radio-pill"><input type="radio" name="vehicleAccess" value="Not sure"> Not sure</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Will a street closure or road permit be required for vehicle delivery?</label>
+        <div class="radio-row">
+          <label class="radio-pill"><input type="radio" name="streetClosure" value="Yes"> Yes</label>
+          <label class="radio-pill"><input type="radio" name="streetClosure" value="No"> No</label>
+          <label class="radio-pill"><input type="radio" name="streetClosure" value="Not sure"> Not sure</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Any floor load / weight restrictions where the vehicle will be displayed? (e.g. upper floor, parking structure)</label>
+        <div class="radio-row">
+          <label class="radio-pill"><input type="radio" name="floorLoad" value="Yes"> Yes</label>
+          <label class="radio-pill"><input type="radio" name="floorLoad" value="No"> No</label>
+          <label class="radio-pill"><input type="radio" name="floorLoad" value="Not sure"> Not sure</label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 3: TIMING -->
+  <section class="step" data-step="3">
+    <h1>Timing</h1>
+    <p class="step-desc">When is the activation happening?</p>
+
+    <div class="field-row">
+      <div class="field">
+        <label for="startDate">Event start date</label>
+        <input type="date" id="startDate" />
+      </div>
+      <div class="field">
+        <label for="endDate">Event end date</label>
+        <input type="date" id="endDate" />
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label for="dailyStart">Daily start time</label>
+        <input type="time" id="dailyStart" value="10:00" />
+      </div>
+      <div class="field">
+        <label for="dailyEnd">Daily end time</label>
+        <input type="time" id="dailyEnd" value="18:00" />
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="loadInTime">Setup / load-in time available before the event</label>
+      <select id="loadInTime">
+        <option value="">Select one</option>
+        <option>Same-day morning</option>
+        <option>Day before</option>
+        <option>2+ days before</option>
+        <option>Not sure yet</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Is this part of a multi-city tour?</label>
+      <div class="radio-row">
+        <label class="radio-pill"><input type="radio" name="tour" value="Yes"> Yes</label>
+        <label class="radio-pill"><input type="radio" name="tour" value="No"> No</label>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 4: AUDIENCE & STAFFING -->
+  <section class="step" data-step="4">
+    <h1>Audience &amp; staffing</h1>
+    <p class="step-desc">A few details on scale and support needs.</p>
+
+    <div class="field">
+      <label for="footTraffic">Expected daily foot traffic</label>
+      <select id="footTraffic">
+        <option value="">Select one</option>
+        <option>Under 100</option>
+        <option>100–500</option>
+        <option>500–2,000</option>
+        <option>2,000+</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Do you need on-site staffing / brand ambassadors?</label>
+      <div class="radio-row">
+        <label class="radio-pill"><input type="radio" name="staffing" value="Yes"> Yes</label>
+        <label class="radio-pill"><input type="radio" name="staffing" value="No"> No</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="staffCount"># of staff requested (if applicable)</label>
+      <input type="number" id="staffCount" min="0" placeholder="e.g. 2" />
+    </div>
+
+    <div class="field" data-tier="10x10 20x20">
+      <label>Will local permits or a Certificate of Insurance be required?</label>
+      <div class="radio-row">
+        <label class="radio-pill"><input type="radio" name="permits" value="Yes"> Yes</label>
+        <label class="radio-pill"><input type="radio" name="permits" value="No"> No</label>
+        <label class="radio-pill"><input type="radio" name="permits" value="Not sure"> Not sure</label>
+      </div>
+    </div>
+
+    <div class="field" data-tier="10x10 20x20">
+      <label>Is parking available for crew vehicles / trucks?</label>
+      <div class="radio-row">
+        <label class="radio-pill"><input type="radio" name="crewParking" value="Yes"> Yes</label>
+        <label class="radio-pill"><input type="radio" name="crewParking" value="No"> No</label>
+        <label class="radio-pill"><input type="radio" name="crewParking" value="Not sure"> Not sure</label>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 5: CONTACT -->
+  <section class="step" data-step="5">
+    <h1>Contact &amp; notes</h1>
+    <p class="step-desc">Who should the activation agency follow up with?</p>
+
+    <div class="field-row">
+      <div class="field">
+        <label for="reqName">Your name</label>
+        <input type="text" id="reqName" placeholder="Jane Doe" />
+      </div>
+      <div class="field">
+        <label for="reqCompany">Team / company</label>
+        <input type="text" id="reqCompany" placeholder="Waymo Marketing" />
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label for="reqEmail">Email</label>
+        <input type="email" id="reqEmail" placeholder="jane@waymo.com" />
+      </div>
+      <div class="field">
+        <label for="reqPhone">Phone</label>
+        <input type="tel" id="reqPhone" placeholder="(555) 555-5555" />
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="notes">Additional notes or special requests</label>
+      <textarea id="notes" rows="3" placeholder="Anything else the activation team should know"></textarea>
+    </div>
+  </section>
+
+  <!-- STEP 6: REVIEW & QUOTE -->
+  <section class="step" data-step="6">
+    <h1>Review &amp; quote</h1>
+    <p class="step-desc">Here's your preliminary estimate based on what you shared.</p>
+
+    <div class="review-card">
+      <div class="review-row"><span>Asset</span><span id="rvAsset">—</span></div>
+      <div class="review-row"><span>Venue</span><span id="rvVenue">—</span></div>
+      <div class="review-row"><span>Dates</span><span id="rvDates">—</span></div>
+      <div class="review-row"><span>Duration</span><span id="rvDuration">—</span></div>
+      <div class="review-row"><span>Shipping zone</span><span id="rvZone">—</span></div>
+      <div class="review-row"><span>Contact</span><span id="rvContact">—</span></div>
+    </div>
+
+    <div class="quote-card">
+      <h2>Estimated Quote</h2>
+      <div class="quote-line"><span id="qBaseLabel">Base rate</span><span id="qBase">$0</span></div>
+      <div class="quote-line"><span id="qDaysLabel">Additional days</span><span id="qDays">$0</span></div>
+      <div class="quote-line"><span id="qTravelLabel">Travel / shipping surcharge</span><span id="qTravel">$0</span></div>
+      <div class="quote-line total"><span>Estimated total</span><span id="qTotal">$0</span></div>
+      <p class="quote-disclaimer">This is a preliminary, automatically generated estimate. A member of the activation team will confirm final pricing within 24 hours.</p>
+    </div>
+
+    <button class="btn-primary btn-submit" id="submitBtn">Request this activation</button>
+  </section>
+
+  <!-- CONFIRMATION -->
+  <section class="step" data-step="confirm">
+    <div class="confirm-wrap">
+      <div class="confirm-check">✓</div>
+      <h1>Your request has been submitted</h1>
+      <p class="step-desc">The activation team will follow up at <span id="confirmEmail">your email</span> with a finalized quote and next steps.</p>
+    </div>
+  </section>
+
+  <!-- NAV -->
+  <div class="nav-row">
+    <button class="btn-secondary" id="backBtn">Back</button>
+    <button class="btn-primary" id="nextBtn">Next</button>
+  </div>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
